@@ -6,7 +6,7 @@ Board:
 <!--      <div> Status: {{cell.status}}</div>-->
       <div *ngIf="cell.status === 'clear' && !cell.mine"> {{cell.proximityMines}}</div>
       <div *ngIf="cell.status === 'flag'">
-        <img src="assets/flagged_bomb.png"/>
+        <img class="cellImage" src="assets/flagged_bomb.png"/>
       </div>
       <div *ngIf="cell.mine && cell.status === 'clear'" > <img class="cellImage" src="assets/revealed_bomb.png"/></div>
       <br>

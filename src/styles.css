@@ -1,1 +1,25 @@
 /* You can add global styles to this file, and also import other style files */
+
+.board{
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+.board td{
+  width: 100px;
+  height: 100px;
+  text-align: center;
+  vertical-align: center;
+}
+.cell{
+  /*display: flex;*/
+  align-items: center;
+  border: black;
+}
+.cellImage{
+  object-fit: contain;
+  align-items: center;
+  /*height: auto;*/
+  width: 100px;
+  max-width: 100px;
+}
