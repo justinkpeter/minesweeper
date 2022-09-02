@@ -11,6 +11,10 @@
   text-align: center;
   vertical-align: center;
 }
+
+.board td:hover{
+  background-color: grey
+}
 .cell{
   /*display: flex;*/
   align-items: center;
