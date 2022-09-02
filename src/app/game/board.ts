@@ -5,6 +5,10 @@ const  NEIGHBORS = [[-1, -1], [-1, 0], [-1, 1], [0, -1], [0, 1], [1, -1], [1, 0]
 export class Board {
   //instantiate 2-D array ----> [ [], [] , [] , [] ..... ]
   cells: Cell[][]= [];
+
+  private remainingCells = 0
+  private bombCount = 0
+
   constructor(size: number, mines: number){
     for(let y= 0; y < size; y++){
       this.cells[y] = []
@@ -19,8 +23,6 @@ export class Board {
     }
 
     // count mines
-
-
     for(let y = 0; y < size; y++){
       for( let x = 0; x < size; x++){
         let numberOfMines = 0
@@ -31,8 +33,13 @@ export class Board {
           }
         }
         this.cells[y][x].proximityMines = numberOfMines;
+        if (this.cells[y][x].mine) {
+          this.bombCount++;
+        }
       }
     }
+
+    this.remainingCells = size * size - this.bombCount;
   }
 
   getRandomCell(): Cell {
@@ -42,19 +49,23 @@ export class Board {
   }
 
 
-  checkCell(cell: Cell){
+  checkCell(cell: Cell): 'Game Over!' | 'Win!' | null{
     // if the cell has not been opened
     if(cell.status !== "open"){
-      return;
+      return null;
     }
 
     // if the cell is a mine
     else if(cell.mine){
-      //this.gameOver(); // .... you're done
+      return 'Game Over!'
     }
 
     else{
       cell.status = 'clear'
+      if(this.remainingCells-- <= 1){
+        return 'Win!'
+      }
+      return null
     }
 
   }

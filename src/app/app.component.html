@@ -1,11 +1,12 @@
 Board:
 
-<table summary="Minesweeper board">
+<table summary="Minesweeper board" class="board">
   <tr *ngFor="let row of board.cells; index as y">
-    <td *ngFor="let cell of row; index as x">
+    <td *ngFor="let cell of row; index as x;" (click)="checkCell(cell)" class="board">
       <div>({{y}}, {{x}})</div>
       <div> Status: {{cell.status}}</div>
-      <div > Mine : {{cell.mine}} </div>
+      <div *ngIf="cell.status === 'clear'"> {{cell.proximityMines}}</div>
+      <div *ngIf="cell.mine" > <img class="cellImage" src="assets/revealed_bomb.png"/></div>
       <div> Proximity: {{cell.proximityMines}}</div>
       <br>
     </td>
