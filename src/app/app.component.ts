@@ -8,5 +8,5 @@ import { Board } from './game/board';
 })
 export class AppComponent {
   title = 'minesweeper';
-  board = new Board(5, 5);
+  board = new Board(10, 10);
 }

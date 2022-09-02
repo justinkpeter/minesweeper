@@ -1,5 +1,10 @@
 Board:
 
 <table summary="Minesweeper board">
-  <tr *ngFor="let row of board.cells">  Hi </tr>
+  <tr *ngFor="let row of board.cells; index as y">
+    <td *ngFor="let column of board.cells; index as x">
+      <div>({{y}}, {{x}})</div>
+    </td>
+
+  </tr>
 </table>
