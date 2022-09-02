@@ -1,6 +1,6 @@
 import { Cell } from "./cell";
 
-class Board {
+export class Board {
   //instantiate 2-D array ----> [ [], [] , [] , [] ..... ]
   cells: Cell[][]= [];
   constructor(size: number, mines: number){
