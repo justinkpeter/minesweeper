@@ -20,4 +20,8 @@ export class AppComponent {
       alert('You win the game :)')
     }
   }
+
+  flag(cell: Cell){
+    cell.status = 'flag'
+  }
 }
