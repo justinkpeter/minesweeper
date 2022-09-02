@@ -3,15 +3,18 @@ Board:
 <table summary="Minesweeper board" class="board">
   <tr *ngFor="let row of board.cells; index as y">
     <td *ngFor="let cell of row; index as x;" (click)="checkCell(cell)" (contextmenu)="$event.preventDefault(); flag(cell)" class="board">
-      <div> Status: {{cell.status}}</div>
-      <div *ngIf="cell.status === 'clear'"> {{cell.proximityMines}}</div>
+<!--      <div> Status: {{cell.status}}</div>-->
+      <div *ngIf="cell.status === 'clear' && !cell.mine"> {{cell.proximityMines}}</div>
       <div *ngIf="cell.status === 'flag'">
         <img src="assets/flagged_bomb.png"/>
       </div>
       <div *ngIf="cell.mine && cell.status === 'clear'" > <img class="cellImage" src="assets/revealed_bomb.png"/></div>
-      <div> {{cell.proximityMines}}</div>
       <br>
     </td>
 
   </tr>
 </table>
+
+
+
+<button (click)="reset()"> Reset </button>

@@ -29,4 +29,8 @@ export class AppComponent {
       cell.status = 'flag'
     }
   }
+
+  reset(){
+    this.board = new Board(10,5)
+  }
 }

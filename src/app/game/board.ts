@@ -57,16 +57,40 @@ export class Board {
 
     // if the cell is a mine
     else if(cell.mine){
+      this.revealAll()
       return 'Game Over!'
     }
 
     else{
       cell.status = 'clear'
+
+      //handle if there are no proximity mines around a cell
+      if(cell.proximityMines === 0) {
+        for(const neighbor of NEIGHBORS) {
+          if (
+            this.cells[cell.row + neighbor[0]] &&
+            this.cells[cell.row + neighbor[0]][cell.column + neighbor[1]]
+          ) {
+            this.checkCell(this.cells[cell.row + neighbor[0]][cell.column + neighbor[1]]);
+          }
+        }
+      }
+
       if(this.remainingCells-- <= 1){
         return 'Win!'
       }
       return null
     }
 
+  }
+
+  revealAll(){
+    for (const row of this.cells) {
+      for (const cell of row) {
+        if (cell.status === 'open') {
+          cell.status = 'clear';
+        }
+      }
+    }
   }
 }
