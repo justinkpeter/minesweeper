@@ -30,7 +30,7 @@ export class Board {
             numberOfMines++
           }
         }
-
+        this.cells[y][x].proximityMines = numberOfMines;
       }
     }
   }
