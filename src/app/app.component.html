@@ -2,8 +2,12 @@ Board:
 
 <table summary="Minesweeper board">
   <tr *ngFor="let row of board.cells; index as y">
-    <td *ngFor="let column of board.cells; index as x">
+    <td *ngFor="let cell of row; index as x">
       <div>({{y}}, {{x}})</div>
+      <div> Status: {{cell.status}}</div>
+      <div > Mine : {{cell.mine}} </div>
+      <div> Proximity: {{cell.proximityMines}}</div>
+      <br>
     </td>
 
   </tr>
